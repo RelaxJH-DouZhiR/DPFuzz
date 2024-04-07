@@ -1,0 +1,5 @@
+lizard==1.17.10
+scikit-learn==1.3.0
+clang==11.0
+tqdm==4.65.0
+adapt==0.4.3
