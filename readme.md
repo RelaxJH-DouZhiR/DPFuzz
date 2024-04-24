@@ -1,5 +1,5 @@
 
-## Install DPFuzz
+## Install DPFuzz 
 
 The fuzz testing environment can refer to the following script: [build.sh](https://github.com/aflgo/aflgo/blob/master/build.sh)
 
@@ -12,21 +12,36 @@ pip install -r requirement.txt
 - install DPFuzz
 
 ```shell
+# Create temporary files
+if [ ! -d "$HOME/fuzzloctmp" ]; then
+    mkdir $HOME/fuzzloctmp
+fi
+
+if [ -d "$HOME/fuzzloctmp" ]; then
+    rm -rf $HOME/fuzzloctmp
+    mkdir $HOME/fuzzloctmp
+fi
+
+cd $HOME/fuzzloctmp
+touch instrumentation.txt
+touch flag.txt
+echo "0" > $HOME/fuzzloctmp/flag.txt
 sudo make clean all && sudo make ;cd llvm_mode ;sudo make clean all && cd .. ;sudo bash -c 'echo core >/proc/sys/kernel/core_pattern'
 ```
 
 ## Run DPFuzz
 1. lizard
-```
+```shell
 lizard -l c -o=/lizard_<PROJECT>.txt
 ```
 2. Collect code features
-```
+```shell
+# Please ensure that the Python version can run clang, such as 3.7. It may be necessary to modify the file='libclang-11. so 'in the cindex of clang to file='libclang. so'
 python script/py/prediction/collect_data_for_defect_prediction.py <PROJECT> <PUT_PATH> <LIZARD_PATH> <LLVM_PATH> <SAVE_PATH>
 ```
 3. Defect prediction
-```
-# Pay attention to modifying the path in the code
+```shell
+# Pay attention to modifying the path in the code. You need to modify the predict_estimator return method in the 'adapt' to 'predict_proba' to obtain defect propensity, which was originally 'predict', in line 631.
 python script/py/prediction/defectprediction.py
 ```
 4. Compile program
