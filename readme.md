@@ -3,7 +3,7 @@
 
 The fuzz testing environment can refer to the following script: [build.sh](https://github.com/aflgo/aflgo/blob/master/build.sh)
 
-- python: `3.7`
+- python: `3.8.19`
 
 ```
 pip install -r requirement.txt
