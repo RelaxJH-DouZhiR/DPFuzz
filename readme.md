@@ -9,10 +9,12 @@ The fuzz testing environment can refer to the following script: [build.sh](https
 pip install -r requirement.txt
 ```
 
-- install DPFuzz
+- Install DPFuzz
 
 ```shell
-# Create temporary files
+# Create a temporary file to store intermediate files. If the directory does not exist, DPFuzz will prompt during instrumentation and testing.
+# Please execute the following command after each PC startup: sudo bash -c 'echo core >/proc/sys/kernel/core_pattern'
+
 if [ ! -d "$HOME/fuzzloctmp" ]; then
     mkdir $HOME/fuzzloctmp
 fi
@@ -36,7 +38,7 @@ lizard -l c -o=/lizard_<PROJECT>.txt
 ```
 2. Collect code features
 ```shell
-# Please ensure that the Python version can run clang, such as 3.7. It may be necessary to modify the file='libclang-11. so 'in the cindex of clang to file='libclang. so'
+# Please ensure that the Python version can run clang, such as 3.7. It may be necessary to modify the file='libclang-11.so 'in the cindex of clang to file='libclang.so'
 python script/py/prediction/collect_data_for_defect_prediction.py <PROJECT> <PUT_PATH> <LIZARD_PATH> <LLVM_PATH> <SAVE_PATH>
 ```
 3. Defect prediction
@@ -48,6 +50,15 @@ python script/py/prediction/defectprediction.py
    Refer to the script/testscript/mjs/mjs_pre.sh file
 5. Run fuzz
    Refer to script/testscript/mjs/DPFuzz.sh file
+
+## Use VM
+The virtual machine is a very convenient way to use DPFuzz, requires VMware 17.5.1.
+- Download DPFuzz4VM: [DPFuzz4VM](https://1drv.ms/u/c/ccba0c915da6d466/Edp4138B-9hGrZwNjii_RG0BrHSkCzXc_6bO1bkYhzNkzQ?e=jtElpd)
+- Use the virtual machine demonstration video: [VMDemoVideo]()
+- Use the virtual machine demonstration script.
+```shell
+```
+
 
 ## Install dataset
 - **NASA NASADefectDataset**
