@@ -51,10 +51,12 @@ python script/py/prediction/defectprediction.py
 5. Run fuzz
    Refer to script/testscript/mjs/DPFuzz.sh file
 
+- Demonstration video: [DemoVideo](https://github.com/RelaxJH-DouZhiR/DPFuzz/blob/main/NativeDPFuzzDemo.mp4)
+
 ## Use VM
 The virtual machine is a very convenient way to use DPFuzz, requires VMware 17.5.1.
 - Download DPFuzz4VM: [DPFuzz4VM](https://1drv.ms/u/c/ccba0c915da6d466/Edp4138B-9hGrZwNjii_RG0BrHSkCzXc_6bO1bkYhzNkzQ?e=jtElpd)
-- Use the virtual machine demonstration video: [VMDemoVideo]()
+- Use the virtual machine demonstration video: [VMDemoVideo](https://github.com/RelaxJH-DouZhiR/DPFuzz/blob/main/VMDPFuzzDemo.mp4)
 - Use the virtual machine demonstration script.
 ```shell
 ```
