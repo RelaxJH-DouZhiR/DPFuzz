@@ -55,11 +55,11 @@ python script/py/prediction/defectprediction.py
 
 ## Use VM
 The virtual machine is a very convenient way to use DPFuzz, requires VMware 17.5.1.
-- Download DPFuzz4VM: [DPFuzz4VM](https://1drv.ms/u/c/ccba0c915da6d466/EZWpeyTySupMkUbhXqqSjywBup9mlDsX7QU03JblCWttiQ?e=WEdI0b)
+1. Download DPFuzz4VM: [DPFuzz4VM](https://1drv.ms/u/c/ccba0c915da6d466/EZWpeyTySupMkUbhXqqSjywBup9mlDsX7QU03JblCWttiQ?e=WEdI0b)
     - User name : `richard`
     - Password : `zrcl991201`
-- Use the virtual machine demonstration video: [VMDemoVideo](https://github.com/RelaxJH-DouZhiR/DPFuzz/blob/main/VMDPFuzzDemo.mp4)
-- Use the virtual machine demonstration script.
+2. The virtual machine demonstration video: [VMDemoVideo](https://github.com/RelaxJH-DouZhiR/DPFuzz/blob/main/VMDPFuzzDemo.mp4)
+3. The virtual machine demonstration script:
 ```shell
 # Step 1
 cd /home/richard/my_toolbox/DPFuzz/DPFuzz
@@ -82,7 +82,6 @@ cd /home/richard/my_toolbox/DPFuzz/script/testscript/mjs
 bash mjs_pre.sh
 bash DPFuzz.sh
 ```
-
 
 ## Install dataset
 - **NASA NASADefectDataset**
