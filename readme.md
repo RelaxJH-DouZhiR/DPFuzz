@@ -55,10 +55,32 @@ python script/py/prediction/defectprediction.py
 
 ## Use VM
 The virtual machine is a very convenient way to use DPFuzz, requires VMware 17.5.1.
-- Download DPFuzz4VM: [DPFuzz4VM](https://1drv.ms/u/c/ccba0c915da6d466/Edp4138B-9hGrZwNjii_RG0BrHSkCzXc_6bO1bkYhzNkzQ?e=jtElpd)
+- Download DPFuzz4VM: [DPFuzz4VM](https://1drv.ms/u/c/ccba0c915da6d466/EZWpeyTySupMkUbhXqqSjywBup9mlDsX7QU03JblCWttiQ?e=WEdI0b)
+    - User name : `richard`
+    - Password : `zrcl991201`
 - Use the virtual machine demonstration video: [VMDemoVideo](https://github.com/RelaxJH-DouZhiR/DPFuzz/blob/main/VMDPFuzzDemo.mp4)
 - Use the virtual machine demonstration script.
 ```shell
+# Step 1
+cd /home/richard/my_toolbox/DPFuzz/DPFuzz
+make clean all && make
+cd /home/richard/my_toolbox/DPFuzz/script/testscript/mjs
+bash mjs_pre.sh #password : zrcl991201
+cd /home/richard/my_toolbox/DPFuzz/DPFuzz/llvm_mode
+make clean all && cd ..
+# Step 2
+cd /home/richard/my_toolbox/DPFuzz/dataset/mjs
+lizard -l c -o=/home/richard/my_toolbox/DPFuzz/script/py/prediction/lizard_file/lizard_mjs_output.txt
+# Step 3
+conda activate py38
+python /home/richard/my_toolbox/DPFuzz/script/py/prediction/collect_data_for_defect_prediction.py mjs /home/richard/my_toolbox/DPFuzz/dataset/mjs /home/richard/my_toolbox/DPFuzz/script/py/prediction/lizard_file /home/richard/anaconda3/envs/py38/lib/python3.8/site-packages/clang/native /home/richard/my_toolbox/DPFuzz/script/py/prediction/PUT_features
+# Step 4
+cd /home/richard/my_toolbox/DPFuzz/script/py/prediction
+python defectprediction.py
+# Step 5
+cd /home/richard/my_toolbox/DPFuzz/script/testscript/mjs
+bash mjs_pre.sh
+bash DPFuzz.sh
 ```
 
 
