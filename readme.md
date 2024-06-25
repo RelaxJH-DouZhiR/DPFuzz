@@ -1,5 +1,5 @@
 
-## Install DPFuzz 
+## Install DPFuzz
 
 The fuzz testing environment can refer to the following script: [build.sh](https://github.com/aflgo/aflgo/blob/master/build.sh)
 
@@ -12,6 +12,7 @@ pip install -r requirement.txt
 - Install DPFuzz
 
 ```shell
+# Warning! Please modify the file path according to the situation.
 # Create a temporary file to store intermediate files. If the directory does not exist, DPFuzz will prompt during instrumentation and testing.
 # Please execute the following command after each PC startup: sudo bash -c 'echo core >/proc/sys/kernel/core_pattern'
 
@@ -33,17 +34,39 @@ sudo make clean all && sudo make ;cd llvm_mode ;sudo make clean all && cd .. ;su
 
 ## Run DPFuzz
 1. lizard
+
+`<PROJECT>` : the name of the project.
+
 ```shell
+# Warning! Please modify the file path according to the situation.
 lizard -l c -o=/lizard_<PROJECT>.txt
+# such as:
+# lizard -l c -o=/lizard_mjs.txt
 ```
 2. Collect code features
+
+`<PROJECT>` : the name of the project.
+
+`<PUT_PATH>` : The folder path of the project under testing.
+
+`<LIZARD_PATH>` : the folder path of the lizard output file.
+
+`<LLVM_PATH>` : the folder path of the LLVM lib.
+
+`<SAVE_PATH>` : the folder path of the save file.
 ```shell
+# Warning! Please modify the file path according to the situation.
 # Please ensure that the Python version can run clang, such as 3.7. It may be necessary to modify the file='libclang-11.so 'in the cindex of clang to file='libclang.so'
 python script/py/prediction/collect_data_for_defect_prediction.py <PROJECT> <PUT_PATH> <LIZARD_PATH> <LLVM_PATH> <SAVE_PATH>
+# such as:
+# python /home/a/fuzz/DPfuzz/script/py/prediction/collect_data_for_defect_prediction.py mjs /home/a/fuzz/DPfuzz/dataset/mjs /home/a/fuzz/DPfuzz/script/py/prediction/lizard_file /home/a/build/llvm_tools/build-llvm/llvm/lib /home/a/fuzz/DPfuzz/script/py/prediction/PUT_features
 ```
 3. Defect prediction
+
+- You need to modify the code in the adapt library to collect code features:
+   - Modify the 'predict_estimator' return method in the 'adapt' to 'predict_proba' to obtain defect propensity, which was originally 'predict', in line 631.
 ```shell
-# Pay attention to modifying the path in the code. You need to modify the predict_estimator return method in the 'adapt' to 'predict_proba' to obtain defect propensity, which was originally 'predict', in line 631.
+# Pay attention to modifying the path in the code.
 python script/py/prediction/defectprediction.py
 ```
 4. Compile program
