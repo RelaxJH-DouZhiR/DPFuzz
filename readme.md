@@ -78,7 +78,7 @@ python script/py/prediction/defectprediction.py
 
 ## Use VM
 The virtual machine is a very convenient way to use DPFuzz, requires VMware 17.5.1.
-1. Download DPFuzz4VM: [DPFuzz4VM](https://1drv.ms/u/c/ccba0c915da6d466/EZWpeyTySupMkUbhXqqSjywBup9mlDsX7QU03JblCWttiQ?e=WEdI0b)
+1. Download DPFuzz4VM: [DPFuzz4VM](https://onedrive.live.com/?cid=CCBA0C915DA6D466&id=CCBA0C915DA6D466%21s247ba9954af24cea9146e15eaa928f2c&parId=root&o=OneUp)
     - User name : `richard`
     - Password : `zrcl991201`
 2. The virtual machine demonstration video: [VMDemoVideo](https://github.com/RelaxJH-DouZhiR/DPFuzz/blob/main/VMDPFuzzDemo.mp4)
